@@ -1,5 +1,5 @@
 import 'package:signals/signals.dart';
-import 'package:todo_list_app/app/models/todo_model.dart';
+import 'package:todo_list_app/app/core/models/todo_model.dart';
 
 class TodoController {
   final todos = <TodoModel>[].toSignal();
@@ -9,7 +9,7 @@ class TodoController {
 
     if (todos.isEmpty) return "Nenhuma tarefa encontrada";
     if (todosNaoCompletados.isEmpty) return "Todas as tarefas estão em dia";
-    return "${todosNaoCompletados.length} pendente(s)";
+    return "${todosNaoCompletados.length} tarefa(s) pendente(s)";
   });
 
   void adicionarTodo(TodoModel todo) {

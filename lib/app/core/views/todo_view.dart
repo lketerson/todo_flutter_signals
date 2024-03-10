@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:signals/signals_flutter.dart';
-import 'package:todo_list_app/app/controllers/todo_controllers.dart';
-import 'package:todo_list_app/app/views/component/add_todo_component.dart';
-import 'package:todo_list_app/app/views/component/todo_item_component.dart';
-
-final todoController = TodoController();
+import 'package:todo_list_app/app/core/controllers/todo_controllers.dart';
+import 'package:todo_list_app/app/core/views/component/add_todo_component.dart';
+import 'package:todo_list_app/app/core/views/component/todo_item_component.dart';
+import 'package:todo_list_app/app/shared/injector/dependencies.dart';
 
 class TodoView extends StatelessWidget {
-  const TodoView({super.key});
+  TodoView({super.key});
+
+  final todoController = denpendenci.get<TodoController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,9 @@ class TodoView extends StatelessWidget {
           IconButton(
               onPressed: () => showModalBottomSheet(
                   context: context,
-                  builder: (_) => const AdicionarTodoComponent()),
+                  builder: (_) => AdicionarTodoComponent(
+                        todoController: todoController,
+                      )),
               icon: const Icon(Icons.add))
         ],
       ),
