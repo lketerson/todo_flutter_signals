@@ -3,12 +3,11 @@ import 'package:signals/signals_flutter.dart';
 import 'package:todo_list_app/app/core/controllers/todo_controllers.dart';
 import 'package:todo_list_app/app/core/views/component/add_todo_component.dart';
 import 'package:todo_list_app/app/core/views/component/todo_item_component.dart';
-import 'package:todo_list_app/app/shared/injector/dependencies.dart';
 
 class TodoView extends StatelessWidget {
-  TodoView({super.key});
+  const TodoView({super.key, required this.todoController});
 
-  final todoController = denpendenci.get<TodoController>();
+  final TodoController todoController;
 
   @override
   Widget build(BuildContext context) {
